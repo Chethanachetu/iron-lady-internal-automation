@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Applicant</title>
+</head>
+<body>
+
+<h2>Edit Applicant</h2>
+
+<form method="post">
+    <label>Name:</label>
+    <input type="text" name="name" value="{{ applicant.name }}" required><br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" value="{{ applicant.email }}" required><br><br>
+
+    <label>Program:</label>
+    <select name="program_id">
+        {% for program in programs %}
+            <option value="{{ program.id }}"
+                {% if program.id == applicant.program_id %}selected{% endif %}>
+                {{ program.name }}
+            </option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Status:</label>
+    <select name="status">
+        <option {% if applicant.status == 'Applied' %}selected{% endif %}>Applied</option>
+        <option {% if applicant.status == 'Shortlisted' %}selected{% endif %}>Shortlisted</option>
+        <option {% if applicant.status == 'Selected' %}selected{% endif %}>Selected</option>
+        <option {% if applicant.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+    </select><br><br>
+
+    <button type="submit">Update Applicant</button>
+</form>
+
+<br>
+<a href="/">Back</a>
+
+</body>
+</html>

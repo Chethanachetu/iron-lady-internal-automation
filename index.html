@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applicants List</title>
+</head>
+<body>
+
+<h2>Applicants</h2>
+
+<a href="/add_applicant">Add Applicant</a>
+<br><br>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Program</th>
+        <th>Status</th>
+    </tr>
+
+    {% for applicant in applicants %}
+    <tr>
+        <td>{{ applicant.name }}</td>
+        <td>{{ applicant.email }}</td>
+        <td>{{ applicant.program_name }}</td>
+        <td>{{ applicant.status }}</td>
+
+        <td>
+            <a href="/edit_applicant/{{ applicant.id }}">Edit</a> |
+            <a href="/delete_applicant/{{ applicant.id }}"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
